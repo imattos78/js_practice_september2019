@@ -4,7 +4,7 @@
   "description": "A repository of JavaScript challenges for you to work on throughout the course",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest test/week2.test.js",
     "eslint": "eslint ./"
   },
   "repository": {
@@ -21,5 +21,10 @@
   "devDependencies": {
     "eslint": "^5.15.1",
     "jest": "^24.5.0"
+  },
+  "dependencies": {
+    "acorn": "^6.3.0",
+    "acorn-jsx": "^5.0.1",
+    "sugar": "^2.0.6"
   }
 }
