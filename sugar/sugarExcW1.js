@@ -36,7 +36,7 @@ function capitalize(word) {
     if (str === undefined) throw new Error("str is required");
     // Add your code here!
     let mean = str.length / 2
-    return str.length % 2 === 0 ? `${str.at(mean - 1)}${str.at(mean)}` : str.at(mean) //I've remplaced charAt() by at()
+    return str.length % 2 === 0 ? `${str.at(mean - 1)}${str.at(mean)}` : str.at(mean);//I've remplaced charAt() by at()
   }
   
   //FIRST SOLUTION 

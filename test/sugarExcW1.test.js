@@ -1,3 +1,4 @@
+//Test Sugar.js
 const {
     capitalize,
     generateInitials,
@@ -9,9 +10,9 @@ const {
     countLinuxUsers,
     getMeanScore,
     simpleFizzBuzz
-  } = require("../sugar/sugarExcsW1");
+  } = require("../sugar/sugarExcW1");
   
-  describe("capitalize", () => {
+  describe.only("capitalize", () => {
     test("returns a capitalized string", () => {
       expect(capitalize("hello")).toBe("Hello");
       expect(capitalize("the quick fox")).toBe("The quick fox");
