@@ -1,4 +1,4 @@
-//Test Sugar.js
+
 const {
     capitalize,
     generateInitials,

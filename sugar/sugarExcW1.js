@@ -66,7 +66,7 @@ function capitalize(word) {
     if (users === undefined) throw new Error("users is required");
     // Add your code here!
     let count = 0;
-    users.forEach((user)=>user.type === "Linux" ? count ++ : 0); //Same forEach for arrays in Sugar.js
+    users.forEach((user)=>user.type === "Linux" ? count ++ : 0) //Same forEach for arrays in Sugar.js
     return count;
   }
   
