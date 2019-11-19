@@ -1,5 +1,7 @@
 const{sumMultiples,
     isValidDNA,
+    getComplementaryDNA,
+    isItPrime,
       areWeCovered,
       createMatrix
 
@@ -46,11 +48,12 @@ describe("sumMultiples", () =>{
 
 });
 
-describe.only("isValidDNA", () =>{
+describe("isValidDNA", () =>{
+    
     test("return true if the string contain C,G,T or A only", () => {
         expect(isValidDNA("TAG")).toBe(true)
     });
-    test("return false if the string don't match with C,G,T or A only", () => {
+    test("return false if the string does't match with C,G,T or A only", () => {
         expect(isValidDNA("TAGSR")).toBe(false);
         expect(isValidDNA("RODRIJO")).toBe(false);
     });
@@ -61,10 +64,62 @@ describe.only("isValidDNA", () =>{
     
 });
 
-describe("createMatrix", () => {
+describe("getComplementaryDNA", () =>{
+    
+    test("return the correct complementary DNA string, 'T' always pairs with 'A', and 'C' always pairs with 'G'", () =>{
+        expect(getComplementaryDNA("ACTG")).toBe("TGAC");
+        expect(getComplementaryDNA("CAGT")).toBe("GTCA");
+    });
+    test("return null if the string doesn't match with C,G,T or A only", () =>{
+        expect(getComplementaryDNA("ACTGSR")).toBe(null);
+        expect(getComplementaryDNA("45%£@!")).toBe(null);  
+        
+    });
+    test("The string should not be case sensitive", () =>{
+        expect(getComplementaryDNA("ACTGtac")).toBe("TGACATG");
+        expect(getComplementaryDNA("ctaga")).toBe("GATCT");
+        
+    });
+    
+    
+});
+
+describe("isItPrime", () => {
+    test("return true if the number is divided by 1 and itself only", () =>{
+        expect(isItPrime(2)).toBe(true);
+        expect(isItPrime(3)).toBe(true);
+        expect(isItPrime(5)).toBe(true);
+        expect(isItPrime(7)).toBe(true);
+
+    });
+    test("return false if the number is divided not only by 1 and itself", () =>{
+        expect(isItPrime(4)).toBe(false);
+        expect(isItPrime(6)).toBe(false);
+        expect(isItPrime(8)).toBe(false);
+        expect(isItPrime(12)).toBe(false);
+
+    });
+    
+  });
+
+describe.only("createMatrix", () => {
   it("returns a matrix of 1 * 1 when passed 1", () =>{
     const result = createMatrix(1, "foo");
     const expected = [["foo"]];
+    expect(result).toEqual(expected);
+  });
+  it("returns a matrix of 3 * 3 when passed 3", () =>{
+    const result = createMatrix(3, "foo");
+    const expected = [
+        ["foo", "foo", "foo"],
+        ["foo", "foo", "foo"],
+        ["foo", "foo", "foo"]
+         ];
+    expect(result).toEqual(expected);
+  });
+  it("returns an empty array if n <= 0", () =>{
+    const result = createMatrix(-1, "foo");
+    const expected = [];
     expect(result).toEqual(expected);
   });
 });

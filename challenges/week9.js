@@ -38,8 +38,10 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  let dna = ["C", "G", "T", "A"];
+  let arr = str.toUpperCase().split('')
+  return arr.every((s)=> dna.includes(s)) && arr.map((w)=> w === 'T' ? 'A' : w === 'C' ? 'G' : w === 'A' ? 'T' : w === 'G' && 'C').join('').toUpperCase() || null
 };
-
 /**
  * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
  * @param {Number} n
@@ -47,6 +49,9 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  for (let i = 2; i < n; i++)
+  if(n % 2 === 0) return false; 
+ return n > 1;
 };
 
 /**
@@ -63,6 +68,12 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  
+  let arr = [];
+for (var i = 0; i < n; i++) {
+  arr.push(new Array(n).fill(fill));
+}
+  return arr
 };
 
 /**
