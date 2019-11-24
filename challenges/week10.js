@@ -4,6 +4,9 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if  (!Number(n)) throw new Error("number is required");
+  let arr = n.toString().split('')
+     return arr.map((n)=> Number(n)).reduce((acc, curr)=> acc + curr)
 };
 
 /**
@@ -17,6 +20,22 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (step === undefined || step < 0){
+    step = 1;
+  }
+  if(start > end){
+    start = [end, end = start][0];
+  }
+  let arr = []
+  for(let i = start; i <= end; i += step){
+    arr.push(i)
+    
+  }
+  if(arr[arr.length-1] < end){
+    arr.push(end)
+  }
+  
+  return arr
 };
 
 /**
