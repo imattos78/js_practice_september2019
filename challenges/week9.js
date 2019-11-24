@@ -94,6 +94,11 @@ const areWeCovered = (staff, day) => {
   if (staff.length === 0){
     return false;
   }
+let arr = staff.map((w)=> w.rota)
+let newArr = [].concat(...arr)
+let count = 0
+newArr.forEach((d)=> d === day && count++)
+return count >= 3 ? true : false
 };
 
 module.exports = {

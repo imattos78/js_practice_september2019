@@ -102,7 +102,7 @@ describe("isItPrime", () => {
     
   });
 
-describe.only("createMatrix", () => {
+describe("createMatrix", () => {
   it("returns a matrix of 1 * 1 when passed 1", () =>{
     const result = createMatrix(1, "foo");
     const expected = [["foo"]];
@@ -124,7 +124,7 @@ describe.only("createMatrix", () => {
   });
 });
 
-describe("areWeCovered", () =>{
+describe.only("areWeCovered", () =>{
  test("it returns false if there are no staff at all", () =>{
     expect(areWeCovered([], "Sunday")).toBe(false);
     expect(areWeCovered([], "Monday")).toBe(false);
@@ -143,4 +143,13 @@ describe("areWeCovered", () =>{
      ];
      expect(areWeCovered(staff, "Wednesday")).toBe(false);
  })
+ test("returns true if the number of staff members to work the same day are >= 3", () =>{
+    const staff = [
+       {name: "gary", rota: ["Monday", "Tuesday"]},
+       {name: "paul", rota: ["Monday", "Tuesday"]},
+       {name: "sally", rota: ["Monday", "Tuesday"]},
+       {name: "jess", rota: ["Monday", "Tuesday"]},
+    ];
+    expect(areWeCovered(staff, "Monday")).toBe(true);
+})
 });
