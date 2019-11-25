@@ -77,4 +77,5 @@ describe.only("getScreentimeAlertList", () =>{
            ]
         expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(["beth_1234","sam_t_2000"])
     })
+   
 });

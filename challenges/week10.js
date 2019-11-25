@@ -1,3 +1,5 @@
+const Sugar = require("sugar")
+Sugar.extend()
 /**
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
  * @param {Number} n
@@ -24,7 +26,7 @@ const createRange = (start, end, step) => {
     step = 1;
   }
   if(start > end){
-    start = [end, end = start][0];
+    start = [end, end = start][0]; //value exchange between variables
   }
   let arr = []
   for(let i = start; i <= end; i += step){
@@ -70,6 +72,9 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  if(!Array.isArray(users)) throw new Error("Incorrect type of data");
+  if (typeof date !== "string") throw new Error("In")
+  
   let result = []
 
   users.map((obj)=> obj.screenTime.filter((d)=> d.date === date).map((u)=>Object.values(u.usage).reduce((a,b)=>a+b))> 100 && result.push(obj.username))
