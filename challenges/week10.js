@@ -93,8 +93,38 @@ const getScreentimeAlertList = (users, date) => {
  * @param {String} str
  */
 const hexToRGB = hexStr => {
-  if (hexStr === undefined) throw new Error("hexStr is required");
+  if (hexStr === undefined) throw new Error
+  ("hexStr is required");
+  if (hexStr[0] !== "#") throw new Error ("The string must start with #");
+  let obj = {
+    "0":0,
+    "A":10,
+    "B":11,
+    "C":12,
+    "D":13,
+    "E":14,
+    "F":15
+  }
+  
+let newArr = hexStr.toUpperCase().slice(1).split('');
+
+let arr = []
+
+newArr.forEach((w)=>Number(w) ? arr.push(Number(w)) : Object.keys(obj).filter((c) => w === c && arr.push(obj[c])))
+
+
+let twoDimArr = arr.map((e,i) => (i % 2 === 0) && arr.slice(i, i + 2)).filter((e) => e)
+
+
+
+let r = twoDimArr[0] === undefined || twoDimArr[0].length < 2 ? "Incorrect" : twoDimArr[0].reduce((a,b)=> (a * 16) + b);
+let g = twoDimArr[1] === undefined || twoDimArr[1].length < 2 ? "Incorrect" : twoDimArr[1].reduce((a,b)=> (a * 16) + b);
+let b = twoDimArr[2] === undefined || twoDimArr[2].length < 2 ? "Incorrect" : twoDimArr[2].reduce((a,b)=> (a * 16) + b);
+
+return r === "Incorrect"|| g === "Incorrect" || b === "Incorrect" ? "This error is becouse you entered an incorrect character or the number of characters are incorrect, only 'A','B','C','D','E','F' are alowed" : "rgb(" + `${r},${g},${b}` + ")"
+ 
 };
+
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.

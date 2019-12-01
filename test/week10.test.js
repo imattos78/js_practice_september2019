@@ -1,7 +1,8 @@
 const{
     sumDigits,
     createRange,
-    getScreentimeAlertList
+    getScreentimeAlertList,
+    hexToRGB
 
 } = require("../challenges/week10");
 
@@ -43,7 +44,7 @@ describe("createRange", () =>{
 
 });
 
-describe.only("getScreentimeAlertList", () =>{
+describe("getScreentimeAlertList", () =>{
     test("given an array of user objects we need to return an array of usernames who have used more than 100 minutes of screentime for a given date ", () =>{
         const users = [
             {
@@ -75,7 +76,23 @@ describe.only("getScreentimeAlertList", () =>{
                           ]
              },
            ]
-        expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(["beth_1234","sam_t_2000"])
+        expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(["beth_1234","sam_t_2000"]);
     })
-   
 });
+describe.only("hexToRGB", () =>{
+    test("Given a string in hexadecimal format, this function must calculate and transform into a string in RGB format", () =>{
+        expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+        expect(hexToRGB("#000000")).toBe("rgb(0,0,0)");
+        expect(hexToRGB("#00FF00")).toBe("rgb(0,255,0)");
+    })
+    test("The function must not be case sensitive", () =>{
+        expect(hexToRGB("#0000Ff")).toBe("rgb(0,0,255)");
+    })
+    test("If the hexadecimal letters are diferents to 'A,B,C,D,E,F' SHOW THE ERROR MESSAGE", ()=>{
+        expect(hexToRGB("#AU00FR")).toBe("This error is becouse you entered an incorrect character or the number of characters are incorrect, only 'A','B','C','D','E','F' are alowed")
+    })
+    test("If the numbers of characters are less than seven SHOW THE ERROR MESSAGE", ()=>{
+        expect(hexToRGB("#04FF0")).toBe("This error is becouse you entered an incorrect character or the number of characters are incorrect, only 'A','B','C','D','E','F' are alowed")
+    })
+})
+   
