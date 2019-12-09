@@ -138,6 +138,18 @@ return r === "Incorrect"|| g === "Incorrect" || b === "Incorrect" ? "This error 
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  let arr = [].concat(...board);
+  let result = ''
+  if(arr[0] === arr[1] && arr[0] === arr[2]) result = arr[0];
+    else if(arr[3] === arr[4] && arr[3] === arr[5]) result = arr[3];
+    else if(arr[6] === arr[7] && arr[6] === arr[8]) result = arr[6]; 
+    else if(arr[0] === arr[3] && arr[0] === arr[6]) result = arr[0];
+    else if(arr[1] === arr[4] && arr[1] === arr[7]) result = arr[1];
+    else if(arr[2] === arr[5] && arr[2] === arr[8]) result = arr[2];
+    else if(arr[0] === arr[4] && arr[0] === arr[8]) result = arr[0];
+    else result = null;   
+   
+  return result;
 };
 
 module.exports = {
